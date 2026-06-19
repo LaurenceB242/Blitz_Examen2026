@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blitz Festival 2026</title>
+    <link rel="icon" type="image/svg+xml" sizes="60x60" href="../images/Blitz.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="../build/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../build/css/style.css">
+</head>
+<body>
+<header class="scrolled">
+    <a href="../../index.html" class="logo-container">
+        <img src="../images/Blitz.svg" alt="Blitz">
+        <div class="texte-groupe">
+            <span class="litz">LITZ</span>
+            <span class="festival">Festival2026</span>
+        </div>
+    </a>
+
+    <nav class="navbar">
+        <button class="menu-burger" id="btn-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="menu" id="menu">
+            <li><a href="./lineUp.html">LINE-UP</a></li>
+
+            <li class="dropdown">
+                <a href="../../index.html#info">INFO</a>
+                <span class="sous-menu-mobile">V</span>
+                <ul class="sous-menu">
+                    <li><a href="./planning.html">PLANNING</a></li>
+                    <li><a href="./mobilite.html">MOBILITE</a></li>
+                </ul>
+            </li>
+
+            <li><a href="./sponsors.html">SPONSORS</a></li>
+        </ul>
+    </nav>
+    <a href="./tickets.html" class="cart-btn">
+        <img src="../images/panier.svg" alt="Panier" class="cart-svg">
+    </a>
+</header>
+<body>
+
+<main class="shop-wrapper">
+
+    <h1 class="shop-main-title">ACHETE TES PLACES !</h1>
+
+    <div class="steps-container">
+        <div class="step-item active">
+            <div class="step-bar"></div>
+            <h2>Selection</h2>
+        </div>
+        <div class="step-item">
+            <div class="step-bar"></div>
+            <h2>Paiement</h2>
+        </div>
+        <div class="step-item">
+            <div class="step-bar"></div>
+            <h2>Confirmation</h2>
+        </div>
+    </div>
+
+    <div class="tickets-grid">
+
+        <div class="ticket-card card-seul">
+            <div class="ticket-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop" alt="Seul">
+            </div>
+            <div class="ticket-content">
+                <div class="ticket-header-row">
+                    <h3>Seul</h3>
+                    <div class="quantity-selector">
+                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                        <span class="qty-value">1</span>
+                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                    </div>
+                </div>
+                <div class="ticket-price">15€</div>
+                <p class="ticket-description">Entrée standard</p>
+            </div>
+        </div>
+
+        <div class="ticket-card card-groupe">
+            <div class="ticket-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop" alt="Groupe">
+            </div>
+            <div class="ticket-content">
+                <div class="ticket-header-row">
+                    <h3>Groupe</h3>
+                    <div class="quantity-selector">
+                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                        <span class="qty-value">1</span>
+                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                    </div>
+                </div>
+                <div class="ticket-price">12€</div>
+                <p class="ticket-description">Entrée standard avec réduction à partir de 5 pers</p>
+            </div>
+        </div>
+
+        <div class="ticket-card card-vip">
+            <div class="ticket-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600&auto=format&fit=crop" alt="VIP">
+            </div>
+            <div class="ticket-content">
+                <div class="ticket-header-row">
+                    <h3>VIP</h3>
+                    <div class="quantity-selector">
+                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                        <span class="qty-value">1</span>
+                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                    </div>
+                </div>
+                <div class="ticket-price">35€</div>
+                <p class="ticket-description">Entrée Premium Zone VIP dédié et boisson de bienvenue</p>
+            </div>
+        </div>
+    </div>
+    <div class="shop-footer-navigation">
+        <button type="button" class="next-step-arrow" aria-label="Étape suivante (Visuel uniquement)">
+            <span class="arrow-text">→</span>
+        </button>
+    </div>
+</main>
+<footer class="site-footer">
+    <!-- SECTION SPONSORS (Centré) -->
+    <div class="sponsors-wrapper">
+        <div class="logos-row">
+            <img src="../images/imagix.svg" alt="Imagix">
+            <img src="../images/jupiler.svg" alt="Jupiler">
+            <img src="../images/cocacola.svg" alt="Coca-Cola">
+        </div>
+        <a href="../pages/sponsors.html" class="sponsor-btn">DECOUVRIR NOS SPONSORS</a>
+    </div>
+
+    <hr class="pink-divider">
+
+    <!-- SECTION INFO (Aligné en bas) -->
+    <div class="footer-main">
+        <div class="footer-left">
+            <div class="logo-wrapper">
+                <img src="../images/Blitz.svg" class="b-icon" alt="Logo Blitz">
+                <span class="logo-text">LITZ</span>
+            </div>
+            <p class="phone">+32 78/80 45 11</p>
+        </div>
+
+        <div class="footer-center">
+            <a href="#" class="pink-header">MENTIONS LÉGALES</a>
+            <!-- Classes black-link ajoutées -->
+            <a href="#" class="black-link">Politique de confidentialité</a>
+            <a href="#" class="black-link">Conditions générales</a>
+        </div>
+
+        <div class="footer-right">
+            <a href="./contact.html" class="pink-header">NOUS CONTACTEZ !</a>
+            <div class="social-icons">
+                <a href="#"><img src="../images/insta.svg" alt="IG"></a>
+                <a href="#"><img src="../images/facebook.svg" alt="FB"></a>
+                <a href="#"><img src="../images/spotify.svg" alt="Spotify"></a>
+                <a href="#"><img src="../images/linkedin.svg" alt="IN"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    const burger = document.getElementById("btn-burger");
+    const menu = document.getElementById("menu");
+
+    burger.addEventListener("click", () => {
+        menu.classList.toggle("active");
+        burger.classList.toggle("active");
+    });
+
+    /* DROPDOWN MULTI SAFE */
+    document.querySelectorAll(".sous-menu-mobile").forEach(toggle => {
+        toggle.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const parent = toggle.parentElement;
+            parent.classList.toggle("active");
+        });
+    });
+
+    function manageHeaderState() {
+        const header = document.querySelector('header');
+        const slide1 = document.querySelector('.slide-1');
+
+        // Position et dimensions en temps réel
+        const rect = slide1.getBoundingClientRect();
+
+        // Facteur de précision : 0.5 représente exactement la moitié
+        const threshold = 0.2;
+
+        // Calcul : si le bas de la slide est à moins de 50% de la hauteur totale
+        // Le calcul utilise rect.height * threshold pour plus de précision
+        if (rect.bottom < (rect.height * threshold)) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+
+    window.addEventListener('scroll', manageHeaderState);
+    window.addEventListener('resize', manageHeaderState);
+
+    // Initialisation
+    manageHeaderState();
+</script>
+</body>
+</html>

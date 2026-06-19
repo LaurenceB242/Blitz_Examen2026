@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blitz Festival 2026</title>
+    <link rel="icon" type="image/svg+xml" sizes="60x60" href="../images/Blitz.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="../build/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../build/css/style.css">
+</head>
+<body>
+<header class="scrolled">
+    <a href="../../index.html" class="logo-container">
+        <img src="../images/Blitz.svg" alt="Blitz">
+        <div class="texte-groupe">
+            <span class="litz">LITZ</span>
+            <span class="festival">Festival2026</span>
+        </div>
+    </a>
+
+    <nav class="navbar">
+        <button class="menu-burger" id="btn-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="menu" id="menu">
+            <li><a href="./lineUp.html">LINE-UP</a></li>
+
+            <li class="dropdown">
+                <a href="../../index.html#info">INFO</a>
+                <span class="sous-menu-mobile">V</span>
+                <ul class="sous-menu">
+                    <li><a href="./planning.html">PLANNING</a></li>
+                    <li><a href="./mobilite.html">MOBILITE</a></li>
+                </ul>
+            </li>
+
+            <li><a href="./sponsors.html">SPONSORS</a></li>
+        </ul>
+    </nav>
+    <a href="./tickets.html" class="btn-ticket">TICKETS</a>
+</header>
+<body>
+<section class="slide sponsors-section">
+    <!-- TITRE DE LA SECTION -->
+    <div class="sponsors-title-container">
+        <h2>NOS PARTENAIRES</h2>
+        <!-- Le trait blanc arqué sous le titre -->
+        <div class="title-underline"></div>
+    </div>
+
+    <!-- LE DOUBLE CADRE (Rose à l'extérieur, Bleu à l'intérieur) -->
+    <div class="outer-pink-box">
+
+
+        <!-- GRILLE BLANCHE CONTENANT LES LOGOS -->
+        <div class="sponsors-white-grid">
+
+            <!-- LIGNE 1 -->
+            <div class="sponsor-logo-item">
+                <img src="../images/imagix.png" alt="Imagix">
+            </div>
+            <div class="sponsor-logo-item">
+                <img src="../images/sncb.png" alt="SNCB">
+            </div>
+            <div class="sponsor-logo-item">
+                <img src="../images/jupiler.png" alt="Jupiler">
+            </div>
+            <div class="sponsor-logo-item">
+                <img src="../images/CocaCola.png" alt="Coca-Cola">
+            </div>
+
+            <!-- LIGNE 2 -->
+            <div class="sponsor-logo-item">
+                <img src="../images/Tec.png" alt="TEC">
+            </div>
+            <div class="sponsor-logo-item">
+                <img src="../images/fuzetea.png" alt="Fuze Tea">
+            </div>
+            <div class="sponsor-logo-item">
+                <img src="../images/SWDE.png" alt="La société wallonne des eaux">
+            </div>
+            <div class="sponsor-logo-item">
+                <img src="../images/Tipik.png" alt="Tipik">
+            </div>
+            <div class="sponsor-logo-item">
+                <img src="../images/CoqWallonie.png" alt="coq wallonie">
+            </div>
+            <!-- Case vide pour respecter la disposition à 4 colonnes de la maquette -->
+            <div class="sponsor-logo-item empty-item"></div>
+        </div>
+
+    </div>
+</section>
+<footer class="site-footer">
+    <!-- SECTION SPONSORS (Centré) -->
+    <div class="sponsors-wrapper">
+        <div class="logos-row">
+            <img src="../images/imagix.svg" alt="Imagix">
+            <img src="../images/jupiler.svg" alt="Jupiler">
+            <img src="../images/cocacola.svg" alt="Coca-Cola">
+        </div>
+        <a href="../pages/sponsors.html" class="sponsor-btn">DECOUVRIR NOS SPONSORS</a>
+    </div>
+
+    <hr class="pink-divider">
+
+    <!-- SECTION INFO (Aligné en bas) -->
+    <div class="footer-main">
+        <div class="footer-left">
+            <div class="logo-wrapper">
+                <img src="../images/Blitz.svg" class="b-icon" alt="Logo Blitz">
+                <span class="logo-text">LITZ</span>
+            </div>
+            <p class="phone">+32 78/80 45 11</p>
+        </div>
+
+        <div class="footer-center">
+            <a href="#" class="pink-header">MENTIONS LÉGALES</a>
+            <!-- Classes black-link ajoutées -->
+            <a href="#" class="black-link">Politique de confidentialité</a>
+            <a href="#" class="black-link">Conditions générales</a>
+        </div>
+
+        <div class="footer-right">
+            <a href="./contact.html" class="pink-header">NOUS CONTACTEZ !</a>
+            <div class="social-icons">
+                <a href="#"><img src="../images/insta.svg" alt="IG"></a>
+                <a href="#"><img src="../images/facebook.svg" alt="FB"></a>
+                <a href="#"><img src="../images/spotify.svg" alt="Spotify"></a>
+                <a href="#"><img src="../images/linkedin.svg" alt="IN"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    const burger = document.getElementById("btn-burger");
+    const menu = document.getElementById("menu");
+
+    burger.addEventListener("click", () => {
+        menu.classList.toggle("active");
+        burger.classList.toggle("active");
+    });
+
+    /* DROPDOWN MULTI SAFE */
+    document.querySelectorAll(".sous-menu-mobile").forEach(toggle => {
+        toggle.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const parent = toggle.parentElement;
+            parent.classList.toggle("active");
+        });
+    });
+
+    function manageHeaderState() {
+        const header = document.querySelector('header');
+        const slide1 = document.querySelector('.slide-1');
+
+        // Position et dimensions en temps réel
+        const rect = slide1.getBoundingClientRect();
+
+        // Facteur de précision : 0.5 représente exactement la moitié
+        const threshold = 0.2;
+
+        // Calcul : si le bas de la slide est à moins de 50% de la hauteur totale
+        // Le calcul utilise rect.height * threshold pour plus de précision
+        if (rect.bottom < (rect.height * threshold)) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+
+    window.addEventListener('scroll', manageHeaderState);
+    window.addEventListener('resize', manageHeaderState);
+
+    // Initialisation
+    manageHeaderState();
+</script>
+</body>
+</html>
