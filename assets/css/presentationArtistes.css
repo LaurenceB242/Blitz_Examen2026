@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Itim&family=Lumanosimo&display=swap");
+.artist-presentation-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
+  box-sizing: border-box;
+  background-color: #000;
+  min-height: 100vh;
+}
+
+@media screen and (min-width: 1025px) {
+  .artist-spotify-mobile {
+    display: none;
+  }
+  .artist-presentation-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "photo   title" "photo   bio" "photo   spotify" "video   social";
+    gap: 0 40px;
+    align-items: start;
+  }
+  .artist-title-name {
+    grid-area: title;
+    margin: 0;
+    padding-top: 0;
+  }
+  .artist-top-block {
+    grid-area: photo;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .artist-photo {
+    flex: 1;
+  }
+  .artist-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+  .artist-bio {
+    grid-area: bio;
+  }
+  .artist-audio-player {
+    grid-area: spotify;
+  }
+  .artist-video {
+    grid-area: video;
+    margin-top: 0;
+  }
+  .artist-video img, .artist-video video {
+    width: 100%;
+    display: block;
+  }
+  .artist-social-links {
+    grid-area: social;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .artist-presentation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .artist-title-name {
+    text-align: center;
+    font-size: 2.2rem;
+  }
+  .artist-top-block {
+    width: 80%;
+  }
+  .artist-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .artist-spotify-mobile {
+    display: none;
+  }
+  .artist-audio-player {
+    width: 80%;
+  }
+  .artist-audio-player iframe {
+    width: 100%;
+    height: 352px;
+    border-radius: 12px;
+  }
+  .artist-bio {
+    width: 80%;
+  }
+  .artist-bio p {
+    color: #fff;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .artist-video {
+    width: 80%;
+  }
+  .artist-video video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .artist-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 80%;
+  }
+  .artist-social-links a {
+    color: #fff;
+    font-size: 2rem;
+  }
+  .artist-social-links a:hover {
+    color: #FF0080;
+  }
+}
+@media screen and (max-width: 600px) {
+  .artist-presentation-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .artist-audio-player {
+    display: none;
+  }
+  .artist-top-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: start;
+  }
+  .artist-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .artist-spotify-mobile {
+    display: block;
+  }
+  .artist-spotify-mobile iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+  }
+  .artist-bio p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .artist-video video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .artist-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+.artist-title-name {
+  font-size: 2.8rem;
+  color: #FF0080;
+  font-weight: bold;
+  margin: 0;
+}
+
+.artist-bio p {
+  color: #fff;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.artist-social-links a {
+  color: #fff;
+  font-size: 2.5rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.artist-social-links a:hover {
+  color: #FF0080;
+  transform: scale(1.15);
+}
+
+/*# sourceMappingURL=presentationArtistes.css.map */

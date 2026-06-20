@@ -1,0 +1,550 @@
+@use '_variables' as *;
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  //background: transparent;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  transition: all 0.5s ease;
+  // Logo et Texte
+  .logo-container {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    img {
+      height: 70px;
+      width: 100px;
+      transition: all 0.5s ease-in-out;
+      filter: brightness(1) invert(0); // Logo noir par défaut
+    }
+    .texte-groupe {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      top: 5px;
+      .festival {
+        font-family: $font-inter;
+        font-size: 1.5rem;
+        color: $color-cardRose ; // FESTIVAL ROSE et GRAS
+        font-weight: bold;
+        transition: all 0.5s ease-in-out;
+        white-space: nowrap;
+      }
+    }
+  }
+  // Scrolled BLANC pour Slide 2
+  .menu a {
+    text-shadow:
+            0 0 10px rgba(251, 251, 251, 0.9),
+            0 0 25px rgba(205, 201, 204, 0.6),
+            0 0 50px rgba(163, 160, 162, 0.3);
+  }
+  // Slide-2 : halo rose sur fond sombre
+  &.scrolled .menu a {
+    text-shadow:
+            0 0 10px rgba(217, 51, 138, 0.9),
+            0 0 25px rgba(217, 51, 138, 0.6),
+            0 0 50px rgba(217, 51, 138, 0.3);
+  }
+  // Survol surtout pour que mobile ça fonctionne aussi !
+  .menu a:hover, .btn-ticket:hover {
+    color: $color-cardRose !important;
+  }
+  .btn-ticket {
+    background-color: $color-cardRose;
+    color: #000000;
+    border: 2px solid $color-cardRose;
+    font-weight: bold;
+  }
+  .btn-ticket:hover {
+    background-color: #ffffff;
+    color: $color-cardRose;
+    border-color: #ffffff;
+  }
+}
+nav {
+  margin-left: auto;
+  margin-right: 50px;
+  font-family: $font-inter;
+  ul {
+    list-style: none;
+    li {
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+  }
+}
+//MENU HORIZONTALE
+nav > ul {
+  display: flex;
+  list-style: none;
+  gap: 100px;
+}
+.logo-container{
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.logo-container img {
+  //border: 2px solid red !important;
+  height: 70px;
+}
+.litz{
+  font-family: $font-lumanosimo;
+  font-size: 2rem;
+  line-height: 1;
+}
+.festival{
+  font-family: $font-inter;
+  font-size: 1rem;
+  color: $color-cardRose;
+}
+//sous menu affichage
+li {
+  position: relative;
+  list-style: none;
+}
+.sous-menu{
+  display: none;
+  position: absolute;
+}
+.sous-menu-mobile {
+  display: none;
+}
+li:hover .sous-menu{
+  display: block;
+}
+.sous-menu li a:hover{
+  color: $color-cardRose;
+}
+//image svg menu
+.menu li a {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+// On n'affiche le SVG QUE pour le 1er (LINE-UP) et le 3ème (SPONSORS) */
+.menu li:nth-child(1) a:hover::after,
+.menu li:nth-child(3) a:hover::after {
+  display: block; /* On réactive l'affichage uniquement ici */
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  visibility: visible;
+}
+.menu > li:not(.dropdown) > a::after {
+  display: none;
+}
+.menu-burger {
+  display: none;
+}
+/* 2. ÉCRANS LARGES (PC) : On active l'affichage uniquement ici */
+@media screen and (min-width: 1025px) {
+  .menu > li:not(.dropdown) > a:hover::after {
+    display: block;
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../../build/images/soulignement.svg');
+  }
+  .slide-2 {
+    .container-grid {
+      grid-template-columns: 1fr; // 1 colonne sur mobile
+      gap: 30px;
+    }
+    .card-diagonal .image-container {
+      height: 250px; // Image plus petite sur mobile
+    }
+  }
+}
+//BOUTON TICKET NAV
+.btn-ticket{
+  text-decoration: none;
+  background-color: transparent;
+  color: $color-cardRose;
+  border: 2px solid $color-cardRose;
+  padding: 10px 20px;
+  font-family: $font-inter;
+}
+.btn-ticket:hover{
+  background-color: $color-cardRose;
+  color: white;
+}
+/* On ne l'affiche que sur les petits écrans */
+@media screen and (max-width: 1024px) {
+  .menu-burger {
+    display: flex;
+  }
+}
+//MEDIA QUERIES TABLETTE NAV
+@media screen and (min-width:768px) and (max-width:1024px){
+  .navbar{
+    position: relative;
+    min-height: 80px;
+  }
+  /* BOUTON TICKETS */
+  .btn-ticket{
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: $color-cardRose;
+    color: #000000;
+    border: 2px solid $color-cardRose;
+    font-weight: bold;
+    z-index: 1000;
+    pointer-events: auto;
+  }
+
+  /* BURGER */
+  .menu-burger{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 32px;
+    right: -40px;
+    width: 30px;
+    height: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  .menu-burger span{
+    width: 100%;
+    height: 3px;
+    background-color: #00E7DC;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+  }
+  .menu-burger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .menu-burger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  .menu-burger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+  /* MENU CACHER */
+  .menu{
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    //background: transparent;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    text-align: left;
+    z-index: 999;
+  }
+
+  /* MENU OUVERT */
+  .menu.active{
+    display: flex;
+  }
+  .menu li{
+    list-style: none;
+    margin: 0;
+  }
+  .menu a{
+    text-decoration: none;
+  }
+  .menu a:hover{
+    color: $color-cardRose;
+  }
+  /* SOUS-MENU */
+  .sous-menu{
+    position: static;
+    display: block;
+    margin-top: 8px;
+    padding-left: 0;
+  }
+  .sous-menu li{
+    margin-top: 5px;
+  }
+}
+.menu li a::after {
+  display: none; /* Cache tout par défaut */
+}
+
+//MENU MOBILE
+@media screen and (max-width: 768px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 80px;
+  }
+  header .menu.active a {
+    color: #ffffff;
+  }
+  /* bouton burger visible */
+  .menu-burger {
+    display: flex;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  .menu-burger span {
+    width: 25px;
+    height: 3px;
+    background-color: #00E7DC;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+  .menu-burger.active {
+    position: fixed;
+    top: 250px;
+    right: 20px;
+  }
+  /* animation burger -> croix */
+  .menu-burger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+  .menu-burger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
+  /* MENU FULLSCREEN NOIR */
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    overflow-y: auto;
+    list-style: none;
+    z-index: 1000;
+  }
+  /* menu ouvert */
+  .menu.active {
+    display: flex;
+  }
+  .menu a {
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+  }
+
+  .menu a:active {
+    color: $color-cardRose;
+  }
+
+  .sous-menu {
+    display: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+    position: relative;
+  }
+  .festival {
+    font-size: 0.8rem !important;
+    color: $color-cardRose;
+  }
+  /* Gestion du sous-menu au clic uniquement */
+  .dropdown.active .sous-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  .sous-menu a {
+    font-size: 18px;
+    color: #cccccc;
+    display: block;
+    line-height: normal;
+  }
+  .sous-menu-mobile {
+    margin-left: 8px;
+    cursor: pointer;
+    color: $color-cardRose;
+    user-select: none;
+    display: inline-block;
+  }
+  //navbar prend tout l'espace à droite */
+  .navbar {
+    order: 3;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  .btn-ticket {
+    order: 2;
+    margin-right: 20px;
+    margin-left: auto;
+    text-decoration: none;
+    background-color: $color-cardRose;
+    color: #000000;
+    border: 2px solid $color-cardRose;
+    padding: 10px 20px;
+    font-family: $font-inter;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  //burger APRÈS ticket
+  .menu-burger {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  //GESTION CONFLIT SURVOLE ET CLIQUER
+  .dropdown > a {
+    pointer-events: auto;
+  }
+  .dropdown:hover .sous-menu {
+    display: none;
+  }
+  .sous-menu {
+    display: none;
+    list-style-type: none;
+    padding: 10px;
+  }
+  .sous-menu a {
+    font-size: 18px;
+    color: #cccccc;
+    display: block;
+    line-height: normal;
+    // On réactive le clic sur les vrais liens du sous-menu (Planning, Mobilité) */
+    pointer-events: auto;
+    position: relative;
+    top: -5px;
+  }
+  .dropdown.active .sous-menu,
+  .dropdown.active:hover .sous-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .sous-menu-mobile {
+    margin-left: 8px;
+    cursor: pointer;
+    color: $color-cardRose;
+    user-select: none;
+    display: inline-block;
+    padding-top: -10px;
+    transition: transform 0.3s ease;
+    //ANTI-BUG 3 : On réactive le clic spécifiquement sur le V */
+    pointer-events: auto;
+  }
+  .dropdown.active .sous-menu-mobile {
+    transform: rotate(180deg);
+  }
+}
+//RAPTICIR LE LOGO ET DISPARAITRE FESTIVAL2026 -> Slide 2 "landingPage"
+header {
+  transition: all 0.5s ease;
+  .logo-container {
+    overflow: hidden;
+    // Transition sur l'image et le texte pour la fluidité
+    img, .litz {
+      transition: all 0.7s ease;
+    }
+    img {
+      width: 100px;
+      transition: all 0.5s ease-in-out; // Transition synchronisée
+    }
+    .litz {
+      font-size: 24px; // Taille initiale
+      transition: all 0.5s ease-in-out;
+    }
+    .festival {
+      transition: all 0.5s ease-in-out;
+      opacity: 1;
+      width: auto;      // On laisse sa largeur naturelle au début
+      white-space: nowrap; // E
+    }
+  }
+  // --- Scrolled Slide 2
+  &.scrolled {
+    .menu a:hover { color: $color-cardRose; }
+    .logo-container {
+      img {
+        width: 60px; // Image réduite
+      }
+      .litz {
+        font-size: 16px; // Texte LITZ réduit
+      }
+      .festival {
+        opacity: 0;
+        display: none; // Disparaît
+      }
+    }
+  }
+}
+header {
+  transition: background 0.6s, color 0.3s;
+  //logo noir qu'on change en blanc
+  .logo-container img {
+    transition: filter 0.3s ease;
+    filter: brightness(1) invert(0);
+  }
+  .litz, .festival, .menu a, .btn-ticket {
+    color: #000000;
+  }
+  &.scrolled {
+    // Le logo devient blanc
+    .logo-container img {
+      filter: brightness(0) invert(1);
+    }
+    // Le texte devient noir sur fond blanc
+    .litz, .festival, .menu a, .btn-ticket {
+      color: #ffffff;
+    }
+  }
+}
+///* On force le masquage pour tout ce qui est dans .sous-menu */
+//.sous-menu a::after {
+//  display: none !important;
+//}
+///* Définition des images pour chaque cas */
+//.menu li:nth-child(1) a:hover::after {
+//  background-image: url('../../build/images/soulignement.svg');
+//}
+//.menu li:nth-child(3) a:hover::after {
+//  background-image: url('../../build/images/soulignement.svg');
+//}

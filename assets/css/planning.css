@@ -1,0 +1,81 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Itim&family=Lumanosimo&display=swap");
+.planning-section {
+  padding: 100px 40px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.planning-title {
+  color: #ffffff;
+  font-size: 3rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+/* Encadré PLANNING */
+.planning-wrapper {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  border: 3px solid #FF0080;
+  box-sizing: border-box;
+}
+
+/* Style des tableaux */
+.planning-table {
+  width: 50%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+/* Ligne de séparation verticale centrale épaisse */
+.border-right {
+  border-right: 5px solid #FF0080;
+}
+
+/* Énorme espace interne pour aérer chaque ligne */
+.planning-table th,
+.planning-table td {
+  padding: 30px 60px; /* Cellules très hautes et très larges */
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* En-têtes ultra massifs (HEURES / ARTISTES) */
+.planning-table th {
+  color: #ffffff;
+  font-size: 1.6rem; /* Taille augmentée */
+  font-weight: 900;
+  letter-spacing: 2px;
+  padding-top: 45px;
+  padding-bottom: 35px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1); /* Ligne subtile sous les titres */
+}
+
+/* Colonne des Heures XXL */
+.time-cell {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.5rem; /* Heures géantes */
+  width: 30%;
+}
+
+/* Noms des Artistes XXL */
+.artist-cell a {
+  color: #b3b3b3;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5rem; /* Artistes très grands et très lisibles */
+  letter-spacing: 1px;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+/* Effet dynamique puissant au survol */
+.artist-cell a:hover {
+  color: #FF0080;
+}
+
+/*# sourceMappingURL=planning.css.map */

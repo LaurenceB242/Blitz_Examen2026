@@ -1,0 +1,187 @@
+@use '_variables' as *;
+
+// [CONTACT PAGE]
+.contact-section.festival-block,
+section#contact.slide {
+  background-color: #1a1a1a;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  padding: 100px 10%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  .contact-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 80px;
+  }
+  .contact-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    flex-shrink: 0;
+    align-items: flex-start;
+  }
+  .artist-social-links {
+    display: flex;
+    gap: 25px;
+
+    a {
+      color: #ffffff;
+      font-size: 1.8rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: color 0.2s ease, transform 0.2s ease;
+
+      &:hover {
+        color: #FF0080;
+        transform: scale(1.1);
+      }
+    }
+  }
+  .copyright-text {
+    color: #ffffff;
+    font-family: $font-inter;
+    font-style: italic;
+    font-size: 1.6rem;
+    margin: 0;
+    text-align: left;
+  }
+  .contact-right-col {
+    flex: 1;
+    max-width: 750px;
+    text-align: left;
+  }
+  .contact-main-title {
+    color: #FF0080;
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 0 0 60px 0;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+  }
+  .form-row-double {
+    display: flex;
+    gap: 50px;
+    width: 100%;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    &.full-width { width: 100%; }
+    label {
+      color: #ffffff;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+    input, textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #ffffff;
+      color: #ffffff;
+      font-size: 1.2rem;
+      padding: 8px 0;
+      width: 100%;
+      outline: none;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      transition: border-color 0.2s ease;
+
+      &:focus { border-bottom-color: #FF0080; }
+    }
+    textarea {
+      height: 38px;
+      resize: none;
+      overflow-y: hidden;
+    }
+  }
+  .pink-star { color: #FF0080; margin-left: 3px; }
+  .form-submit-block { text-align: left; margin-top: 15px; }
+  .btn-submit {
+    background-color: #dbdbdb;
+    color: #FF0080;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px 35px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover { background-color: #ffffff; }
+  }
+
+  // FORMAT TABLETTE
+  @media (max-width: 1024px) {
+    padding: 80px 5%;
+    align-items: flex-start;
+
+    .contact-container {
+      gap: 40px;
+    }
+
+    .contact-main-title {
+      font-size: 2.5rem;
+      margin: 0 0 40px 0;
+    }
+
+    .form-group label {
+      font-size: 1.3rem;
+    }
+  }
+
+  //FORMAT MOBILE
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+
+    .contact-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .contact-right-col {
+      width: 100%;
+    }
+
+    .contact-main-title {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-row-double {
+      flex-direction: column;
+      gap: 45px;
+    }
+
+    .contact-left-col {
+      order: 2; // Aligne les réseaux
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: 20px;
+    }
+
+    .artist-social-links {
+      gap: 20px;
+      a { font-size: 1.5rem; }
+    }
+    .copyright-text {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  }
+}

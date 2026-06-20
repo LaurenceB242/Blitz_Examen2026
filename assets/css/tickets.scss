@@ -1,0 +1,324 @@
+@use '_variables' as *;
+
+// [TICKETS PAGE]
+body.shop-body {
+  background-color: #211f1f ;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: $font-lumanosimo;
+  overflow-x: hidden; /* Empêche les barres de défilement horizontales bizarres */
+  .btn-ticket.cart-btn {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .cart-svg {
+      width: 35px;
+      height: 35px;
+      filter: brightness(0) invert(1); // blanc par défaut
+      transition: filter 0.2s ease;
+    }
+
+    &:hover .cart-svg {
+      filter: brightness(0) saturate(100%) invert(10%) sepia(100%) saturate(5000%) hue-rotate(300deg); // rose au hover
+    }
+
+  }
+
+  // Tablette
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cart-btn {
+      position: absolute;
+      top: 22px;
+      right: 80px;
+    }
+    .cart-svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+// Mobile
+@media screen and (max-width: 768px) {
+  .cart-btn {
+    order: 2;
+    margin-right: 15px;
+    margin-left: auto;
+  }
+  .cart-svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Conteneur sécurisé : remplace les hacks 100vw */
+.shop-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px 100px 20px;
+  box-sizing: border-box;
+  color: #ffffff;
+}
+
+/* --- LOGO & NAV PANIER --- */
+.cart-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.cart-icon-link svg {
+  width: 24px;
+  height: 24px;
+  color: #FF0080;
+}
+
+.cart-icon-link:hover {
+  transform: scale(1.1);
+}
+
+/* --- TITRE VERT FLASH --- */
+.shop-main-title {
+  color: #00FF00;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-align: center;
+  margin: 40px 0;
+  letter-spacing: 1px;
+}
+
+/* --- FIL D'ARIANE --- */
+.steps-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 50px;
+  gap: 20px;
+}
+
+.step-item {
+  flex: 1;
+  text-align: center;
+}
+
+.step-bar {
+  height: 6px;
+  background-color: #555555;
+  width: 100%;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+.step-item.active .step-bar {
+  background-color: #FF0080;
+}
+
+.step-item h2 {
+  font-size: 1.8rem;
+  font-weight: normal;
+  color: #ffffff;
+  margin: 0;
+}
+
+.step-item.active h2 {
+  color: #FF0080;
+}
+
+/* --- GRILLE SÉCURISÉE DES CARTES --- */
+.tickets-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* Force toutes les cartes à avoir la même hauteur */
+  gap: 30px;
+  width: 100%;
+  flex-wrap: wrap; /* Aligne proprement en dessous sur petit écran */
+  margin-bottom: 40px;
+}
+
+/* Définition stricte des cartes pour éviter le bug vertical */
+.ticket-card {
+  background-color: #1a1919;
+  width: 320px;
+  max-width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex-shrink: 0; /* Bloque le rétrécissement forcé de la carte */
+}
+
+.card-seul { border: 2px solid #556611; }
+.card-groupe { border: 2px solid #116622; }
+.card-vip { border: 2px solid #551144; }
+
+.ticket-img-wrapper {
+  width: 100%;
+  height: 180px;
+  flex-shrink: 0;
+}
+
+.ticket-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ticket-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Ligne Titre + Quantité */
+.ticket-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.ticket-content h3 {
+  font-size: 1.8rem;
+  font-weight: normal;
+  margin: 0;
+}
+
+.ticket-price {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.ticket-description {
+  color: #b3b3b3;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-top: auto; /* Pousse le texte au bas de la carte */
+}
+
+/* --- ANTI CA-SE-CASSE-LA-GUEULE POUR LES BOUTONS - / + --- */
+.quantity-selector {
+  display: flex;
+  flex-direction: row !important; /* Force l'alignement horizontal absolu */
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0; /* Bloque l'écrasement */
+}
+
+.qty-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 0 5px;
+  line-height: 1;
+  display: inline-block;
+}
+
+.qty-btn:hover {
+  color: #FF0080;
+}
+
+.qty-value {
+  font-size: 1.5rem;
+  min-width: 20px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* --- BOUTON DE NAVIGATION INFERIEUR --- */
+.shop-footer-navigation {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.next-step-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #FF0080;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.next-step-arrow .arrow-text {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1;
+  margin-top: -4px;
+}
+
+.next-step-arrow:hover {
+  transform: scale(1.1);
+  background-color: #ffffff;
+}
+
+.next-step-arrow:hover .arrow-text {
+  color: #FF0080;
+}
+
+/* --- ADAPTATION MOBILE --- */
+@media (max-width: 768px) {
+  .steps-container {
+    gap: 10px;
+  }
+  .step-item h2 {
+    font-size: 1.2rem;
+  }
+  .shop-main-title {
+    font-size: 2rem;
+  }
+}
+
+/*bouton retout ticket*/
+/* --- ZONE DE NAVIGATION INFÉRIEURE (BOUTON UNIQUE À DROITE) --- */
+.shop-footer-navigation {
+  display: flex;
+  justify-content: flex-end; /* Repousse le bouton sagement tout à droite */
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* --- STYLE DU BOUTON SUIVANT SANS ACTION --- */
+.next-step-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #FF0080; /* Rose Blitz permanent */
+  border: none;              /* Pas de bordure par défaut de bouton */
+  border-radius: 50%;        /* Rond parfait */
+  outline: none;
+  cursor: default;           /* Curseur normal pour indiquer qu'il est inactif */
+}
+
+.next-step-arrow .arrow-text {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1;
+  margin-top: -4px;          /* Centrage parfait de la flèche */
+}

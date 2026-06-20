@@ -1,0 +1,118 @@
+@use '_variables' as *;
+
+// [MOBILITE PAGE]
+.slide.location-section {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  height: auto;
+  box-sizing: border-box;
+  padding: 100px 20px 60px;
+}
+// Question + Map
+.location-main-block {
+  display: flex;
+  justify-content: space-between; // Pousse la question à gauche et la map à droite
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 60px;
+  width: 100%;
+}
+//Aligne la question Où à gauche
+.location-question {
+  flex: 1;
+  text-align: left;
+}
+.location-question h1 {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0;
+}
+// CONTENEUR DE LA CARTE
+.location-map-container {
+  display: inline-block; // Force le conteneur à prendre la largeur exacte de la carte
+  text-align: left;     // Aligne TOUT le contenu intérieur + le texte à gauche
+  border-radius: 2%;
+}
+.map-image {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  display: block;      // Supprime les espaces blancs sous l'image
+  margin: 0;           // Force l'image à se caler à gauche du bloc
+}
+.location-address {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: left;  // Aligne le texte à gauche
+  margin-top: 5px;   // Colle le texte juste sous la carte
+  margin-bottom: 0;
+  padding: 0;        // Nettoie d'éventuels espaces internes parasites
+}
+// LES BOX OUVRANTES
+.transport-accordions {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.transport-box {
+  width: 100%;
+  background-color: #dbdbdb;
+}
+.transport-box summary {
+  background-color: #FF0080;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 20px 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+.transport-box summary::-webkit-details-marker {
+  display: none;
+}
+.transport-content {
+  color: #333333;
+  padding: 30px;
+  font-size: 1.3rem;
+  text-align: left;
+}
+//TABLETTE
+@media (max-width: 768px) {
+  .slide.location-section {
+    min-height: unset;
+    padding: 80px 15px 40px;
+  }
+  .location-main-block {
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  .location-question h1 {
+    font-size: 3rem;
+  }
+  .location-map-container iframe {
+    width: 100%;
+    height: 250px;
+  }
+  .location-address {
+    font-size: 1.1rem;
+  }
+  .transport-box summary {
+    font-size: 1.3rem;
+    padding: 14px 20px;
+  }
+  .transport-content {
+    font-size: 1rem;
+    padding: 20px;
+  }
+}

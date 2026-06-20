@@ -1,4 +1,4 @@
-//COULEUR LANDING PAGE
+//COULEURS
 $color-tickets: #00FF33;
 $color-planning: #FF00CC;
 $color-mobilite: #CCFF00;
@@ -6,8 +6,6 @@ $color-text: #000000;
 $color-bg-dark: #FF0080;  //1ere nuance bg
 $color-bg-darker: #1F1A1A; //2e nuance bg
 $color-contourWhite: #FFFFFF;
-
-//COULEUR ARTISTES
 $color-cardBlue: #00E7DC;
 $color-cardRose: #FF0080;
 $color-cardGreen:#A9EE06;
@@ -15,23 +13,8 @@ $color-cardMauve:#FB00FF;
 $color-cardOrange:#FFA43C;
 $color-cardGreen:#A9EE06;
 $color-cardRouge:#FF3C3C;
-
 //POLICES CARACTERES
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Itim&family=Lumanosimo&display=swap');
 $font-inter: 'Inter', sans-serif;
 $font-itim: 'Itim', cursive;
 $font-lumanosimo: 'Lumanosimo', cursive;
-
-//ARTISTES FLIPCARDS
-//$color-orelsan          { --artist-color: #00E7DC; --text-color: #004643; }
-//$color-thea             { --artist-color: #FF0080; --text-color: #4D0026; }
-//$color-damso            { --artist-color: #A9EE06; --text-color: #314600; }
-//$color-helena           { --artist-color: #FB00FF; --text-color: #4B004D; }
-//$color-pierre-garnier   { --artist-color: #FFA43C; --text-color: #4C2900; }
-//$color-tayc             { --artist-color: #A9EE06; --text-color: #314600; }
-//$color-assyla           { --artist-color: #00E7DC; --text-color: #004643; }
-//$color-mentissa         { --artist-color: #FF3C3C; --text-color: #4D0000; }
-//$color-loic-nottet      { --artist-color: #FF3C3C; --text-color: #4D0000; }
-//$color-nuit-incolore    { --artist-color: #FFA43C; --text-color: #4C2900; }
-//$color-dadju            { --artist-color: #FF3C3C; --text-color: #4D0000; }
-//$color-pierre-de-maere  { --artist-color: #00E7DC; --text-color: #004643; }

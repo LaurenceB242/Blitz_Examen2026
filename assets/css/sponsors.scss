@@ -1,0 +1,70 @@
+@use '_variables' as *;
+
+// [SPONSORS PAGES]
+.sponsors-section {
+  text-align: center;
+  font-family: $font-inter;
+  .sponsors-title-container {
+    display: inline-block;
+    margin-bottom: 50px;
+    h2{
+      color: #ffffff;
+      font-size: 2.2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+    }
+    .title-underline {
+      width: 280px;
+      height: 15px;
+      border-bottom: 3px solid #ffffff;
+      border-radius: 0 0 50% 50%; /* Crée l'effet de courbe blanche de la maquette */
+      margin: 0 auto;
+    }
+  }
+  // CADRE EXTÉRIEUR ROSE
+  .outer-pink-box {
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 6px solid $color-cardRose;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+  // BLOC BLANC CENTRAL
+  .sponsors-white-grid {
+    background-color: #ffffff;
+    padding: 50px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); //4 colonnes
+    gap: 40px 20px;
+    align-items: center;
+    justify-items: center;
+  }
+  // EMPLACEMENT DE CHAQUE LOGO
+  .sponsor-logo-item {
+    width: 100%;
+    max-width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sponsor-logo-item img {
+    width: auto;
+    max-width: 100%;
+    max-height: 80px; //Évite qu'un logo vertical comme la SWDE ne devienne géant
+    object-fit: contain;
+    //filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.05)); /* Léger relief très propre */
+  }
+  //Case invisible pour l'alignement
+  .empty-item {
+    display: block;
+  }
+  // RESPONSIVE TABLETTE/MOBILE
+  @media (max-width: 768px) {
+    .sponsors-white-grid {
+      grid-template-columns: repeat(2, 1fr); // 2 colonnes sur mobile
+      padding: 30px 20px;
+    }
+  }
+}

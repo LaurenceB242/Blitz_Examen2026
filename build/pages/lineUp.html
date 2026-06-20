@@ -309,63 +309,7 @@
         </div>
     </footer>
 </main>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        // Vérifie si l'URL contient "lineUp"
-        if (window.location.href.includes("lineUp")) {
-            const header = document.querySelector('header');
-            if (header) {
-                header.classList.add('scrolled');
-            }
-        }
-    });
-</script>
-
-<script>
-    const burger = document.getElementById("btn-burger");
-    const menu = document.getElementById("menu");
-
-    burger.addEventListener("click", () => {
-        menu.classList.toggle("active");
-        burger.classList.toggle("active");
-    });
-
-    /* DROPDOWN MULTI SAFE */
-    document.querySelectorAll(".sous-menu-mobile").forEach(toggle => {
-        toggle.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-
-            const parent = toggle.parentElement;
-            parent.classList.toggle("active");
-        });
-    });
-
-    function manageHeaderState() {
-        const header = document.querySelector('header');
-        const slide1 = document.querySelector('.slide-1');
-
-        // Position et dimensions en temps réel
-        const rect = slide1.getBoundingClientRect();
-
-        // Facteur de précision : 0.5 représente exactement la moitié
-        const threshold = 0.2;
-
-        // Calcul : si le bas de la slide est à moins de 50% de la hauteur totale
-        // Le calcul utilise rect.height * threshold pour plus de précision
-        if (rect.bottom < (rect.height * threshold)) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    }
-
-    window.addEventListener('scroll', manageHeaderState);
-    window.addEventListener('resize', manageHeaderState);
-
-    // Initialisation
-    manageHeaderState();
-</script>
+<script src="../../assets/js/scripts.js" defer></script>
 </body>
 </html>
 
