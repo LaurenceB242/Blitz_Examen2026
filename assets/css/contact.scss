@@ -33,9 +33,11 @@ section#contact.slide {
 
   // Masque les réseaux sociaux
   .artist-social-links {
-    display: none !important;
+    display: none;
   }
-
+  #page-artiste .ticket-image {
+    display: block;
+  }
   // MASQUE DEFINITIVEMENT BLITZ ©
   .copyright-text {
     display: none !important;

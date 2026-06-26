@@ -5,9 +5,10 @@ body.shop-body {
   background-color: #211f1f ;
   margin: 0;
   padding: 0;
+  height: 100vh;
   min-height: 100vh;
-  font-family: $font-lumanosimo;
-  overflow-x: hidden; /* Empêche les barres de défilement horizontales bizarres */
+  font-family: $font-inter;
+  overflow: hidden; // Empêche les barres de défilement horizontales bizarres
   .btn-ticket.cart-btn {
     background-color: transparent;
     border: none;
@@ -28,7 +29,6 @@ body.shop-body {
     }
 
   }
-
   // Tablette
   @media screen and (min-width: 768px) and (max-width: 1024px) {
     .cart-btn {
@@ -56,16 +56,17 @@ body.shop-body {
   }
 }
 
-/* Conteneur sécurisé : remplace les hacks 100vw */
+//Conteneur
 .shop-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px 100px 20px;
   box-sizing: border-box;
   color: #ffffff;
+  font-family: $font-inter;
 }
 
-/* --- LOGO & NAV PANIER --- */
+//LOGO & NAV PANIER
 .cart-icon-link {
   display: inline-flex;
   align-items: center;
@@ -84,7 +85,7 @@ body.shop-body {
   transform: scale(1.1);
 }
 
-/* --- TITRE VERT FLASH --- */
+// TITRE VERT FLASH
 .shop-main-title {
   color: #00FF00;
   font-size: 2.5rem;
@@ -131,18 +132,18 @@ body.shop-body {
   color: #FF0080;
 }
 
-/* --- GRILLE SÉCURISÉE DES CARTES --- */
+//GRILLE SÉCURISÉE DES CARTES
 .tickets-grid {
   display: flex;
   justify-content: center;
-  align-items: stretch; /* Force toutes les cartes à avoir la même hauteur */
+  align-items: stretch; // Force toutes les cartes à avoir la même hauteur
   gap: 30px;
   width: 100%;
-  flex-wrap: wrap; /* Aligne proprement en dessous sur petit écran */
+  flex-wrap: wrap; // Aligne proprement en dessous sur petit écran
   margin-bottom: 40px;
 }
 
-/* Définition stricte des cartes pour éviter le bug vertical */
+// Définition stricte des cartes pour éviter le bug vertical
 .ticket-card {
   background-color: #1a1919;
   width: 320px;
@@ -152,12 +153,18 @@ body.shop-body {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  flex-shrink: 0; /* Bloque le rétrécissement forcé de la carte */
+  flex-shrink: 0; // Bloque le rétrécissement forcé de la carte
 }
 
-.card-seul { border: 2px solid #556611; }
-.card-groupe { border: 2px solid #116622; }
-.card-vip { border: 2px solid #551144; }
+.card-seul {
+  border: 2px solid #556611;
+}
+.card-groupe {
+  border: 2px solid #116622;
+}
+.card-vip {
+  border: 2px solid #551144;
+}
 
 .ticket-img-wrapper {
   width: 100%;
@@ -178,7 +185,7 @@ body.shop-body {
   flex-grow: 1;
 }
 
-/* Ligne Titre + Quantité */
+// Ligne Titre + Quantité
 .ticket-header-row {
   display: flex;
   justify-content: space-between;
@@ -203,16 +210,16 @@ body.shop-body {
   color: #b3b3b3;
   font-size: 0.95rem;
   line-height: 1.4;
-  margin-top: auto; /* Pousse le texte au bas de la carte */
+  margin-top: auto; // Pousse le texte au bas de la carte
 }
 
-/* --- ANTI CA-SE-CASSE-LA-GUEULE POUR LES BOUTONS - / + --- */
+//Bouton
 .quantity-selector {
   display: flex;
-  flex-direction: row !important; /* Force l'alignement horizontal absolu */
+  flex-direction: row !important; // Force l'alignement horizontal absolu
   align-items: center;
   gap: 12px;
-  flex-shrink: 0; /* Bloque l'écrasement */
+  flex-shrink: 0; //Bloque l'écrasement
 }
 
 .qty-btn {
@@ -237,7 +244,7 @@ body.shop-body {
   display: inline-block;
 }
 
-/* --- BOUTON DE NAVIGATION INFERIEUR --- */
+// BOUTON DE NAVIGATION INFERIEUR
 .shop-footer-navigation {
   display: flex;
   justify-content: flex-end;
@@ -275,7 +282,7 @@ body.shop-body {
   color: #FF0080;
 }
 
-/* --- ADAPTATION MOBILE --- */
+// ADAPTATION MOBILE
 @media (max-width: 768px) {
   .steps-container {
     gap: 10px;
@@ -288,11 +295,10 @@ body.shop-body {
   }
 }
 
-/*bouton retout ticket*/
-/* --- ZONE DE NAVIGATION INFÉRIEURE (BOUTON UNIQUE À DROITE) --- */
+//bouton suivant ticket
 .shop-footer-navigation {
   display: flex;
-  justify-content: flex-end; /* Repousse le bouton sagement tout à droite */
+  justify-content: flex-end; // Repousse le bouton sagement tout à droite
   align-items: center;
   width: 100%;
   max-width: 1200px;
@@ -300,19 +306,17 @@ body.shop-body {
   padding: 0 20px;
   box-sizing: border-box;
 }
-
-/* --- STYLE DU BOUTON SUIVANT SANS ACTION --- */
 .next-step-arrow {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 50px;
   height: 50px;
-  background-color: #FF0080; /* Rose Blitz permanent */
-  border: none;              /* Pas de bordure par défaut de bouton */
-  border-radius: 50%;        /* Rond parfait */
+  background-color: #FF0080;
+  border: none;
+  border-radius: 50%;
   outline: none;
-  cursor: default;           /* Curseur normal pour indiquer qu'il est inactif */
+  cursor: default;
 }
 
 .next-step-arrow .arrow-text {
@@ -320,5 +324,5 @@ body.shop-body {
   font-size: 2rem;
   font-weight: bold;
   line-height: 1;
-  margin-top: -4px;          /* Centrage parfait de la flèche */
+  margin-top: -4px;
 }
