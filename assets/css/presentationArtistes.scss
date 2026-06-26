@@ -15,6 +15,7 @@
   color: #FF0080;
   font-weight: bold;
   margin: 0;
+  text-align: center;
 }
 
 .artist-bio p {
@@ -30,10 +31,8 @@
     font-size: 2.5rem;
     text-decoration: none;
     transition: transform 0.2s ease, color 0.2s ease;
-
     &:hover {
       color: #FF0080;
-      transform: scale(1.15);
     }
   }
 }
@@ -49,10 +48,18 @@
       "photo   spotify"
       "video   social";
     gap: 0 40px;
-    align-items: start;
+    align-items: center;
+    text-align: center;
   }
-  .artist-title-name    { grid-area: title; margin: 0; padding-top: 0; }
-  .artist-top-block     {
+  .artist-title-name
+  {
+    grid-area: title;
+    margin: 0;
+    padding-top: 0;
+    text-align: left;
+  }
+  .artist-top-block
+  {
     grid-area: photo;
     display: flex;
     flex-direction: column;
@@ -68,20 +75,30 @@
       display: block;
     }
   }
-  .artist-bio           { grid-area: bio; }
+  .artist-bio
+  {
+    grid-area: bio;
+    text-align: left;
+  }
   .artist-audio-player  { grid-area: spotify; }
   .artist-video         {
     grid-area: video;
     margin-top: 0;
     img, video { width: 100%; display: block; }
   }
-  .artist-social-links  { grid-area: social;
+  .artist-social-links {
     display: flex;
     justify-content: center;
+    gap: 20px;
   }
 }
 // TABLETTE
 @media screen and (min-width: 601px) and (max-width: 1024px) {
+  //.artist-presentation-container {
+  //  display: flex;
+  //  flex-direction: column;
+  //}
+
   .artist-presentation-container {
     display: flex;
     flex-direction: column;
@@ -89,7 +106,7 @@
   }
   .artist-title-name {
     text-align: center;
-    font-size: 2.2rem;
+    font-size: 2.8rem;
   }
   .artist-top-block {
     width: 80%;
@@ -123,6 +140,11 @@
       height: auto;
       display: block;
     }
+  }
+  .artist-media-column {
+    display: block;
+    width: 100%;
+    padding-right: 0;
   }
   .artist-social-links {
     display: flex;
@@ -179,3 +201,4 @@
     gap: 20px;
   }
 }
+

@@ -1,3 +1,79 @@
+
+// 1. NAVIGATION (MENU BURGER & DROPDOWN)
+const burger = document.getElementById("btn-burger");
+const menu = document.getElementById("menu");
+
+// On vérifie que le burger existe sur la page avant d'ajouter l'écouteur
+if (burger && menu) {
+    burger.addEventListener("click", () => {
+        menu.classList.toggle("active");
+        burger.classList.toggle("active");
+    });
+}
+
+/* DROPDOWN MOBILE */
+document.querySelectorAll(".sous-menu-mobile").forEach(toggle => {
+    toggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const parent = toggle.parentElement;
+        if (parent) {
+            parent.classList.toggle("active");
+        }
+    });
+});
+
+// 2. GESTION DU HEADER AU DEFILEMENT
+function manageHeaderState() {
+    const header = document.querySelector('header');
+    const slide1 = document.querySelector('.slide-1');
+
+    // SÉCURITÉ : Si on est sur une page sans ".slide-1", on applique une règle par défaut ou on stoppe
+    if (!slide1 || !header) {
+        // Optionnel : Si pas de slide-1 (autres pages), on peut forcer le header en mode 'scrolled'
+        if (header) header.classList.add('scrolled');
+        return;
+    }
+
+    // Position et dimensions en temps réel
+    const rect = slide1.getBoundingClientRect();
+    const threshold = 0.2;
+
+    // Calcul du scroll
+    if (rect.bottom < (rect.height * threshold)) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+}
+
+// Écouteurs d'événements
+window.addEventListener('scroll', manageHeaderState);
+window.addEventListener('resize', manageHeaderState);
+
+// Initialisation au chargement de la page
+document.addEventListener("DOMContentLoaded", manageHeaderState);
+
+// 3. LINE UP
+document.addEventListener("DOMContentLoaded", () => {
+    // Vérifie si l'URL contient "lineUp"
+    if (window.location.href.includes("lineUp")) {
+        const header = document.querySelector('header');
+        if (header) {
+            header.classList.add('scrolled');
+        }
+    }
+});
+
+// 4. Contact
+function autoExpand(textarea) {
+    // On réinitialise la hauteur pour recalculer correctement si on efface du texte
+    textarea.style.height = 'auto';
+    // On applique la nouvelle hauteur basée sur le contenu écrit
+    textarea.style.height = textarea.scrollHeight + 'px';
+}
+
 /*
 //NAVIGATION
 
@@ -92,78 +168,3 @@ window.addEventListener('resize', manageHeaderState2);
 // Initialisation
 manageHeaderState2();
 */
-
-// 1. NAVIGATION (MENU BURGER & DROPDOWN)
-const burger = document.getElementById("btn-burger");
-const menu = document.getElementById("menu");
-
-// On vérifie que le burger existe sur la page avant d'ajouter l'écouteur
-if (burger && menu) {
-    burger.addEventListener("click", () => {
-        menu.classList.toggle("active");
-        burger.classList.toggle("active");
-    });
-}
-
-/* DROPDOWN MOBILE */
-document.querySelectorAll(".sous-menu-mobile").forEach(toggle => {
-    toggle.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const parent = toggle.parentElement;
-        if (parent) {
-            parent.classList.toggle("active");
-        }
-    });
-});
-
-// 2. GESTION DU HEADER AU DEFILEMENT
-function manageHeaderState() {
-    const header = document.querySelector('header');
-    const slide1 = document.querySelector('.slide-1');
-
-    // SÉCURITÉ : Si on est sur une page sans ".slide-1", on applique une règle par défaut ou on stoppe
-    if (!slide1 || !header) {
-        // Optionnel : Si pas de slide-1 (autres pages), on peut forcer le header en mode 'scrolled'
-        if (header) header.classList.add('scrolled');
-        return;
-    }
-
-    // Position et dimensions en temps réel
-    const rect = slide1.getBoundingClientRect();
-    const threshold = 0.2;
-
-    // Calcul du scroll
-    if (rect.bottom < (rect.height * threshold)) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-}
-
-// Écouteurs d'événements
-window.addEventListener('scroll', manageHeaderState);
-window.addEventListener('resize', manageHeaderState);
-
-// Initialisation au chargement de la page
-document.addEventListener("DOMContentLoaded", manageHeaderState);
-
-// 3. LINE UP
-document.addEventListener("DOMContentLoaded", () => {
-    // Vérifie si l'URL contient "lineUp"
-    if (window.location.href.includes("lineUp")) {
-        const header = document.querySelector('header');
-        if (header) {
-            header.classList.add('scrolled');
-        }
-    }
-});
-
-// 4. Contact
-function autoExpand(textarea) {
-    // On réinitialise la hauteur pour recalculer correctement si on efface du texte
-    textarea.style.height = 'auto';
-    // On applique la nouvelle hauteur basée sur le contenu écrit
-    textarea.style.height = textarea.scrollHeight + 'px';
-}

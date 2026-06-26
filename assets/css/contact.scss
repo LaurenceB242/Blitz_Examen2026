@@ -3,7 +3,6 @@
 // [CONTACT PAGE]
 .contact-section.festival-block,
 section#contact.slide {
-  background-color: #1a1a1a;
   width: 100%;
   min-height: 100vh;
   height: auto;
@@ -12,7 +11,8 @@ section#contact.slide {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Arial, sans-serif;
+  font-family: $font-inter;
+
   .contact-container {
     width: 100%;
     max-width: 1400px;
@@ -22,6 +22,7 @@ section#contact.slide {
     align-items: flex-end;
     gap: 80px;
   }
+
   .contact-left-col {
     display: flex;
     flex-direction: column;
@@ -29,52 +30,42 @@ section#contact.slide {
     flex-shrink: 0;
     align-items: flex-start;
   }
+
+  // Masque les réseaux sociaux
   .artist-social-links {
-    display: flex;
-    gap: 25px;
-
-    a {
-      color: #ffffff;
-      font-size: 1.8rem;
-      text-decoration: none;
-      display: inline-block;
-      transition: color 0.2s ease, transform 0.2s ease;
-
-      &:hover {
-        color: #FF0080;
-        transform: scale(1.1);
-      }
-    }
+    display: none !important;
   }
+
+  // MASQUE DEFINITIVEMENT BLITZ ©
   .copyright-text {
-    color: #ffffff;
-    font-family: $font-inter;
-    font-style: italic;
-    font-size: 1.6rem;
-    margin: 0;
-    text-align: left;
+    display: none !important;
   }
+
   .contact-right-col {
     flex: 1;
     max-width: 750px;
     text-align: left;
   }
+
   .contact-main-title {
     color: #FF0080;
     font-size: 3.5rem;
     font-weight: bold;
     margin: 0 0 60px 0;
   }
+
   .contact-form {
     display: flex;
     flex-direction: column;
     gap: 45px;
   }
+
   .form-row-double {
     display: flex;
     gap: 50px;
     width: 100%;
   }
+
   .form-group {
     display: flex;
     flex-direction: column;
@@ -96,19 +87,21 @@ section#contact.slide {
       width: 100%;
       outline: none;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: $font-inter;
       transition: border-color 0.2s ease;
 
       &:focus { border-bottom-color: #FF0080; }
     }
     textarea {
-      height: 38px;
-      resize: none;
-      overflow-y: hidden;
+      min-height: 30px;
+      resize: vertical;
+      overflow-y: auto;
     }
   }
+
   .pink-star { color: #FF0080; margin-left: 3px; }
   .form-submit-block { text-align: left; margin-top: 15px; }
+
   .btn-submit {
     background-color: #dbdbdb;
     color: #FF0080;
@@ -119,7 +112,6 @@ section#contact.slide {
     border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.2s ease;
-
     &:hover { background-color: #ffffff; }
   }
 
@@ -127,22 +119,19 @@ section#contact.slide {
   @media (max-width: 1024px) {
     padding: 80px 5%;
     align-items: flex-start;
-
     .contact-container {
       gap: 40px;
     }
-
     .contact-main-title {
       font-size: 2.5rem;
       margin: 0 0 40px 0;
     }
-
     .form-group label {
       font-size: 1.3rem;
     }
   }
 
-  //FORMAT MOBILE
+  // FORMAT MOBILE
   @media (max-width: 768px) {
     padding: 60px 20px;
 
@@ -168,20 +157,11 @@ section#contact.slide {
     }
 
     .contact-left-col {
-      order: 2; // Aligne les réseaux
+      order: 2;
       flex-direction: column;
       align-items: center;
       width: 100%;
       gap: 20px;
-    }
-
-    .artist-social-links {
-      gap: 20px;
-      a { font-size: 1.5rem; }
-    }
-    .copyright-text {
-      font-size: 1.2rem;
-      text-align: center;
     }
   }
 }

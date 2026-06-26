@@ -4,7 +4,6 @@ header {
   top: 0;
   width: 100%;
   z-index: 1000;
-  //background: transparent;
   background: transparent;
   display: flex;
   justify-content: space-between;
@@ -49,19 +48,22 @@ header {
   // Slide-2 : halo rose sur fond sombre
   &.scrolled .menu a {
     text-shadow:
-            0 0 10px rgba(217, 51, 138, 0.9),
-            0 0 25px rgba(217, 51, 138, 0.6),
-            0 0 50px rgba(217, 51, 138, 0.3);
+            0 0 10px rgb(255, 0, 155),0 0 25px rgb(255, 0, 134),0 0 50px rgb(238, 0, 125);
   }
   // Survol surtout pour que mobile ça fonctionne aussi !
   .menu a:hover, .btn-ticket:hover {
     color: $color-cardRose !important;
   }
   .btn-ticket {
+    display: inline-block;
+    text-decoration: none;
     background-color: $color-cardRose;
-    color: #000000;
     border: 2px solid $color-cardRose;
+    padding: 10px 20px;
     font-weight: bold;
+    font-family: $font-inter;
+    line-height: 1;
+    transition: all 0.3s ease;
   }
   .btn-ticket:hover {
     background-color: #ffffff;
@@ -93,6 +95,13 @@ nav > ul {
   display: flex;
   align-items: center;
   padding: 5px;
+}
+.texte-groupe{
+  //border: 2px solid blue !important;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 20px;
 }
 .logo-container img {
   //border: 2px solid red !important;
@@ -132,10 +141,10 @@ li:hover .sous-menu{
   display: inline-block;
   padding-bottom: 5px;
 }
-// On n'affiche le SVG QUE pour le 1er (LINE-UP) et le 3ème (SPONSORS) */
+// On n'affiche le SVG QUE pour le 1er (LINE-UP) et le 3ème (SPONSORS)
 .menu li:nth-child(1) a:hover::after,
 .menu li:nth-child(3) a:hover::after {
-  display: block; /* On réactive l'affichage uniquement ici */
+  display: block; // On réactive l'affichage uniquement ici
   position: absolute;
   left: 50%;
   top: 100%;
@@ -148,15 +157,21 @@ li:hover .sous-menu{
   visibility: visible;
 }
 .menu > li:not(.dropdown) > a::after {
-  display: none;
+  display: none !important;
 }
 .menu-burger {
   display: none;
 }
-/* 2. ÉCRANS LARGES (PC) : On active l'affichage uniquement ici */
+// 2. ÉCRANS LARGES (PC) : On active l'affichage uniquement ici
 @media screen and (min-width: 1025px) {
+  nav {
+    padding: 15px 20px;
+  }
+  .droite ul {
+    gap: 20px;
+  }
   .menu > li:not(.dropdown) > a:hover::after {
-    display: block;
+    display: block !important;
     content: "";
     position: absolute;
     left: 50%;
@@ -199,11 +214,35 @@ li:hover .sous-menu{
 }
 //MEDIA QUERIES TABLETTE NAV
 @media screen and (min-width:768px) and (max-width:1024px){
+  //nav {
+  //  padding: 10px 15px;
+  //}
+  //nav.nav-white {
+  //  padding: 10px 15px;
+  //  width: 100%;
+  //}
+  //nav.nav-white .gauche .container {
+  //  transform: scale(0.7);
+  //}
+  //nav.nav-white .droite ul {
+  //  gap: 12px;
+  //}
+  //nav.nav-white .droite a {
+  //  font-size: 0.8rem;
+  //}
+  //nav.nav-white .btn-tickets {
+  //  padding: 6px 10px;
+  //  font-size: 0.8rem;
+  //}
   .navbar{
     position: relative;
     min-height: 80px;
   }
-  /* BOUTON TICKETS */
+  .menu a{
+        text-decoration: none;
+        color: #ffffff !important;
+      }
+  //BOUTON TICKETS
   .btn-ticket{
     position: absolute;
     top: 20px;
@@ -309,8 +348,10 @@ li:hover .sous-menu{
   }
   /* bouton burger visible */
   .menu-burger {
+    order: 2;
     display: flex;
     flex-direction: column;
+    gap: 5px;
     background: none;
     border: none;
     cursor: pointer;
@@ -330,15 +371,16 @@ li:hover .sous-menu{
   }
   /* animation burger -> croix */
   .menu-burger.active span:nth-child(1) {
-    transform: rotate(45deg) translateY(8px);
+    transform: translateY(7px) rotate(45deg);
   }
   .menu-burger.active span:nth-child(2) {
     opacity: 0;
+    transform: translateX(-10px);
   }
   .menu-burger.active span:nth-child(3) {
-    transform: rotate(-45deg) translateY(-8px);
+    transform: translateY(-8px) rotate(-45deg);
   }
-  /* MENU FULLSCREEN NOIR */
+  //MENU FULLSCREEN
   .menu {
     position: fixed;
     top: 0;
@@ -355,7 +397,7 @@ li:hover .sous-menu{
     list-style: none;
     z-index: 1000;
   }
-  /* menu ouvert */
+//Menu ouvert
   .menu.active {
     display: flex;
   }
@@ -380,7 +422,7 @@ li:hover .sous-menu{
     font-size: 0.8rem !important;
     color: $color-cardRose;
   }
-  /* Gestion du sous-menu au clic uniquement */
+  //Gestion du sous-menu au clic uniquement
   .dropdown.active .sous-menu {
     display: flex;
     flex-direction: column;
@@ -426,7 +468,7 @@ li:hover .sous-menu{
     order: 2;
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4.2px;
     background: none;
     border: none;
     cursor: pointer;
@@ -495,11 +537,11 @@ header {
     .festival {
       transition: all 0.5s ease-in-out;
       opacity: 1;
-      width: auto;      // On laisse sa largeur naturelle au début
-      white-space: nowrap; // E
+      width: auto;   // On laisse sa largeur au début
+      white-space: nowrap;
     }
   }
-  // --- Scrolled Slide 2
+  // Scrolled Slide 2
   &.scrolled {
     .menu a:hover { color: $color-cardRose; }
     .logo-container {
@@ -537,14 +579,3 @@ header {
     }
   }
 }
-///* On force le masquage pour tout ce qui est dans .sous-menu */
-//.sous-menu a::after {
-//  display: none !important;
-//}
-///* Définition des images pour chaque cas */
-//.menu li:nth-child(1) a:hover::after {
-//  background-image: url('../../build/images/soulignement.svg');
-//}
-//.menu li:nth-child(3) a:hover::after {
-//  background-image: url('../../build/images/soulignement.svg');
-//}
