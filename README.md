@@ -66,4 +66,3 @@ Fichiers clés
 - `build/css/style.css` — CSS compilé pour production
 
 © Projet Blitz — structure fournie pour l'examen 2026
-test
