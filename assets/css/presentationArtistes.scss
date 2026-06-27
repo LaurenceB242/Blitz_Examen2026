@@ -1,206 +1,135 @@
 @use '_variables' as *;
 
+// Spotify mobile cachée par défaut sur PC
+.artist-spotify-mobile {
+  display: none;
+}
 // [PRESENTATION ARTISTES PAGE]
 .artist-presentation-container {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 100px 20px 40px;
-  box-sizing: border-box;
-  background-color: #000;
-  min-height: 100vh;
-}
-.artist-title-name {
-  font-size: 2.8rem;
-  color: #FF0080;
-  font-weight: bold;
-  margin: 0;
+  padding: 100px 121px 40px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  /* Ou avec gap : calc(50% - 20px) calc(50% - 20px); */
+  grid-template-areas:
+    "photo   title"
+    "photo   bio"
+    "photo   spotify"
+    "video   social";
+  gap: 0 40px;
+  align-items: center;
   text-align: center;
-}
-
-.artist-bio p {
-  color: #fff;
-  line-height: 1.6;
-  font-size: 1rem;
-  margin-bottom: 15px;
-}
-
-.artist-social-links {
-  a {
-    color: #fff;
-    font-size: 2.5rem;
-    text-decoration: none;
-    transition: transform 0.2s ease, color 0.2s ease;
-    &:hover {
-      color: #FF0080;
-    }
-  }
-}
-@media screen and (min-width: 1025px) {
-  .artist-spotify-mobile { display: none; }
-  .artist-presentation-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-      "photo   title"
-      "photo   bio"
-      "photo   spotify"
-      "video   social";
-    gap: 0 40px;
-    align-items: center;
-    text-align: center;
-  }
-  .artist-title-name
-  {
+  .artist-title-name {
+    font-size: 2.8rem;
+    color: $color-cardRose;
     grid-area: title;
     margin: 0;
     padding-top: 0;
     text-align: left;
   }
-  .artist-top-block
-  {
+  .artist-top-block {
     grid-area: photo;
     display: flex;
     flex-direction: column;
     height: 100%;
-  }
-  .artist-photo {
-    flex: 1;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-    }
-  }
-  .artist-bio
-  {
-    grid-area: bio;
-    text-align: left;
-  }
-  .artist-audio-player  { grid-area: spotify; }
-  .artist-video         {
-    grid-area: video;
-    margin-top: 0;
-    img, video { width: 100%; display: block; }
-  }
-  .artist-social-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-}
-// TABLETTE
-@media screen and (min-width: 601px) and (max-width: 1024px) {
-  //.artist-presentation-container {
-  //  display: flex;
-  //  flex-direction: column;
-  //}
-
-  .artist-presentation-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .artist-title-name {
-    text-align: center;
-    font-size: 2.8rem;
-  }
-  .artist-top-block {
-    width: 80%;
-  }
-  .artist-photo img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  .artist-spotify-mobile { display: none; }
-  .artist-audio-player {
-    width: 80%;
-    iframe {
-      width: 100%;
-      height: 352px;
-      border-radius: 12px;
+    .artist-photo {
+      flex: 1; //prend l'espace bloc gauche aux maximum
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
   .artist-bio {
-    width: 80%;
+    grid-area: bio;
+    text-align: left;
     p {
-      color: #fff;
-      font-size: 0.95rem;
+      color: $color-white;
       line-height: 1.6;
+      font-size: 1rem;
+      margin-bottom: 15px;
     }
   }
-  .artist-video {
-    width: 80%;
-    video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-  }
-  .artist-media-column {
-    display: block;
-    width: 100%;
-    padding-right: 0;
+  .artist-audio-player {
+    grid-area: spotify;
   }
   .artist-social-links {
+    grid-area: social;
     display: flex;
     justify-content: center;
     gap: 20px;
-    width: 80%;
     a {
-      color: #fff;
-      font-size: 2rem;
-      &:hover { color: #FF0080; }
+      color: $color-white;
+      font-size: 2.5rem;
+      text-decoration: none;
+      transition: 0.2s ease;
+      &:hover {
+        color: $color-cardRose;
+      }
     }
   }
+  .artist-video {
+    grid-area: video;
+    margin-top: 30px;
+  }
 }
-// MOBILE
-@media screen and (max-width: 600px) {
+//Tablette
+@media (max-width: 1024px) {
   .artist-presentation-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    .artist-top-block { //image portrait
+      width: 100%;
+    }
+    .artist-audio-player {
+      width: 100%;
+    }
+    .artist-title-name {
+      font-size: 3.8rem;
+      margin: -50px 0 5px ;
+      text-align: center;
+    }
+    .artist-bio {
+      p {
+        color: $color-white;
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-top: 20px;
+      }
+    }
   }
-  .artist-audio-player { display: none; }
-  // spotify caché, remplacé par spotify-mobile car pas moyen placé comme voulue donc adapté avec cette méthode
-  .artist-top-block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    align-items: start;
+}
+//mobile
+@media screen and (max-width: 402px) {
+  .artist-presentation-container {
+    padding: 100px 0 40px;
+    .artist-audio-player {
+      display: none;
+    }
+    .artist-top-block {
+      display: grid;
+      grid-template-columns: 30% 1fr;
+    }
+    .artist-title-name {
+      font-size: 2.3rem;
+      margin: -10px 0 5px ;
+      text-align: center;
+    }
+    .artist-bio p {
+      font-size: 1rem;
+      line-height: 1.5;
+
+    }
   }
-  .artist-photo img {
-    width: 100%;
-    height: auto;
-    display: block;
+  .artist-video {
+    margin-top: 50px !important; //imposé pour descendre plus bas
+    margin-bottom: 25px;
   }
   .artist-spotify-mobile {
     display: block;
     iframe {
-      width: 100%;
-      height: 200px;
+      height: 100%;
       border-radius: 12px;
     }
   }
-  .artist-bio p {
-    font-size: 0.85rem;
-    line-height: 1.5;
-  }
-  .artist-video video {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  .artist-social-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-}
-#page-artiste .ticket-image {
-  display: block;
 }

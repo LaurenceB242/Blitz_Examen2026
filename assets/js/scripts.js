@@ -67,12 +67,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // 4. Contact
-function autoExpand(textarea) {
-    // On réinitialise la hauteur pour recalculer correctement si on efface du texte
-    textarea.style.height = 'auto';
-    // On applique la nouvelle hauteur basée sur le contenu écrit
-    textarea.style.height = textarea.scrollHeight + 'px';
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const textarea = document.getElementById("message");
+
+    if (textarea) {
+        textarea.addEventListener("input", function () {
+            this.style.height = "auto"; // Réinitialise
+            this.style.height = this.scrollHeight + "px"; // S'adapte au texte
+        });
+    }
+});
 
 /*
 //NAVIGATION

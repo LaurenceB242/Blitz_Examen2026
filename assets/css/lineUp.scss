@@ -1,200 +1,145 @@
 @use '_variables' as *;
 @use '_template' as *;
 @use 'sass:list';
-
-//Template de couleurs attribuer à mes flipcards
-@each $name, $colors in $artist-colors {
-  $artist: list.nth($colors, 1);
-  $text:   list.nth($colors, 2);
-  .color-#{$name} {
-    --artist-color: #{$artist};
-    --text-color:   #{$text};
-  }
-}
-//permettre un scroll libre sans être couper
 .slide3 {
-  background-color: #000;
-  padding-top: 80px;
-  padding-bottom: 60px;
-  overflow-x: visible;
-  overflow-y: auto;
-  min-height: 100vh;
-  height: auto;
-  box-sizing: border-box;
-  width: 100%;
+  height: auto; //évite les line ups de déborder
   p {
-    color: #00FF00;
+    color: $color-vert;
     font-size: 3.5rem;
     font-weight: bold;
     font-family: $font-inter;
     text-align: center;
-    margin: 30px 0 40px;
+    margin: 30px 0 40px; //changer mobile
   }
-}
-// gille de 4 par lignes
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding: 0 40px 40px;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0 20px 40px;
-    gap: 15px;
+  // gille de 4 par lignes
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0 80px 60px;
+    max-width: 1400px; //évite des images pixéliser sur + grand écran
+    margin: 0 auto;//centre automatiquement mes cadres
+
+    //TABLETTE
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 120px 40px;
+      gap: 15px;
+    }
+    // Mobile 2 colonne
+    @media (max-width: 600px) {
+      gap: 25px;
+      padding: 0 50px 40px;
+      grid-template-columns: 1fr;
+    }
   }
-  // Mobile 2 colonne
-  @media (max-width: 600px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    padding: 0 10px 40px;
+  // [Flipcard]
+  .artist-card {
+    aspect-ratio: 1 / 1;
+    perspective: 1000px; //la manière dont sa se retourne en 3D
   }
-  // on passe à 1
-  @media (max-width: 360px) {
-    grid-template-columns: 1fr;
+  .card-inner {
+    height: 100%; //pour que les cards artistes fasse leurs tailles
+    transition: transform 0.6s; //la vitesse
+    transform-style: preserve-3d; //gère recto/verso et évite l'affichage à l'envers
+    cursor: pointer;
   }
-}
-// [Flipcard]
-.artist-card {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  perspective: 1000px;
-  overflow: visible;
-}
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  cursor: pointer;
-}
-.artist-card:hover .card-inner {
-  transform: rotateY(180deg);
-}
-// RECTO
-.card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  box-sizing: border-box;
-}
-.card-front {
-  background-color: #000;
-  border: 30px solid var(--artist-color);
-  overflow: hidden;
-  .artist-conatiner {
-    position: relative;
+  .artist-card:hover .card-inner {
+    transform: rotateY(180deg); //quand on passe dessus sa se retourne
+  }
+  // RECTO
+  .card-front,
+  .card-back {
+    position: absolute;
     width: 100%;
     height: 100%;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
+    // car il sort du flux donc faut forcer les partie à faire la même taille que le conteneur card-inner
+    backface-visibility: hidden;
+  }
+  //Template de couleurs attribuer à mes flipcards
+  @each $name, $colors in $artist-colors {
+    $artist: list.nth($colors, 1);
+    $text:   list.nth($colors, 2);
+    .color-#{$name} {
+      --artist-color: #{$artist};
+      --text-color:   #{$text};
     }
   }
-}
-// NOM centré en bas
-.name-tag {
-  position: absolute;
-  bottom: 30px;
-  left: 0;
-  width: 100%;             // prend toute la largeur
-  text-align: center;      // centre le texte
-  color: #fff;
-  font-size: 1.6rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
-  white-space: normal;
-  line-height: 1.2;
-  background: transparent;
-  padding: 0 8px;
-  box-sizing: border-box;
-  font-family: $font-inter;
-}
-// VERSO
-.card-back {
-  transform: rotateY(180deg);
-  background-color: var(--artist-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-family: $font-inter, regular;
-  padding: 20px;
-  gap: 40px;
-  color: var(--text-color, #000);
-}
-.artist-name-back {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: var(--text-color, #000);
-  margin: 0;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-.artist-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  width: 100%;
-  h3 {
-    font-size: 48px;
-    margin: 0;
-    color: var(--text-color, #000);
-    font-weight: 900;
-    line-height: 1;
+  .card-front {
+    border: 35px solid var(--artist-color);
+    .artist-conatiner {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
-  //.btn-lineup { font-size: 1.2rem; padding: 10px 30px; }
-  button {
-    background-color: var(--artist-color);
-    color: rgba(0, 0, 0, 0.6);
-    border: none;
-    border-radius: 50px;
-    padding: 12px 32px;
-    font-size: 1rem;
-    font-weight: bold;
+  // NOM centré en bas
+  .name-tag {
+    position: absolute;
+    bottom: 30px;
+    width: 100%; // crée un boite pour que le texte s'alligne pas par défaut à gauche
+    text-align: center;// centre le texte
+    color: $color-white;
+    font-size: 1.6rem;
+    font-family: $font-inter, regular;
+    font-weight: normal;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    box-shadow: 0 6px rgba(0, 0, 0, 0.2);
-    transition: all 0.1s ease;
-    &:active {
-      transform: translateY(4px);
-      box-shadow: 0 2px rgba(0, 0, 0, 0.2);
-    }
-    &:hover {
-      background-color: var(--text-color, #000);
-      color: var(--artist-color);
-    }
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
+    padding: 8px;
   }
-  a {
-    color: inherit;
-    text-decoration: none;
-    display: inline-block;
-  }
-}
-// MOBILE
-@media (max-width: 768px) {
-  .slide.line_up {
-    padding-top: 80px;
-    padding-bottom: 40px;
-    p { font-size: 2rem; }
-  }
-  .grid-container {
-    grid-template-columns: 1fr;
+  // VERSO
+  .card-back {
+    transform: rotateY(180deg);//affiche l'autre côté
+    background-color: var(--artist-color);
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: $font-inter, regular;
+    padding: 20px;
+    gap: 40px;
+  }
+  .artist-name-back {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--text-color, #000);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .artist-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+    h3 {
+      font-size: 48px;
+      margin: 0;
+      color: var(--text-color, );
+      line-height: 1;
+    }
+    //.btn-lineup { font-size: 1.2rem; padding: 10px 30px; }
+    button {
+      background-color: var(--artist-color);
+      color: rgba(0, 0, 0, 0.6);
+      border: none;
+      border-radius: 50px;
+      padding: 12px 32px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 6px rgba(0, 0, 0, 0.2);
+      transition: all 0.1s ease;
+      &:hover {
+        background-color: var(--text-color, #000);
+        color: var(--artist-color);
+      }
+    }
   }
 }
