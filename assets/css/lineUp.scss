@@ -5,7 +5,7 @@
   height: auto; //évite les line ups de déborder
   p {
     color: $color-vert;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: bold;
     font-family: $font-inter;
     text-align: center;
@@ -26,7 +26,7 @@
       padding: 0 120px 40px;
       gap: 15px;
     }
-    // Mobile 2 colonne
+    // Mobile 1 colonne
     @media (max-width: 600px) {
       gap: 25px;
       padding: 0 50px 40px;

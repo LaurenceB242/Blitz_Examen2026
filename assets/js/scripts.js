@@ -55,18 +55,9 @@ window.addEventListener('resize', manageHeaderState);
 // Initialisation au chargement de la page
 document.addEventListener("DOMContentLoaded", manageHeaderState);
 
-// 3. LINE UP
-document.addEventListener("DOMContentLoaded", () => {
-    // Vérifie si l'URL contient "lineUp"
-    if (window.location.href.includes("lineUp")) {
-        const header = document.querySelector('header');
-        if (header) {
-            header.classList.add('scrolled');
-        }
-    }
-});
 
-// 4. Contact
+
+// 4. Contact (text area)
 document.addEventListener("DOMContentLoaded", () => {
     const textarea = document.getElementById("message");
 
@@ -78,7 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-/*
+
+
+/* DES ESSAIES mais pas mis dans le site je garde juste pour moi !
 //NAVIGATION
 
 const burger = document.getElementById("btn-burger");
@@ -171,4 +164,15 @@ window.addEventListener('resize', manageHeaderState2);
 
 // Initialisation
 manageHeaderState2();
+
+// 3. LINE UP
+document.addEventListener("DOMContentLoaded", () => {
+    // Vérifie si l'URL contient "lineUp"
+    if (window.location.href.includes("lineUp")) {
+        const header = document.querySelector('header');
+        if (header) {
+            header.classList.add('scrolled');
+        }
+    }
+});
 */

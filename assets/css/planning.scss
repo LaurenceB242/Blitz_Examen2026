@@ -1,23 +1,18 @@
 @use '_variables' as *;
-
 // [PAGES PLANINNG]
 .planning-section {
-  padding: 80px;
-  text-align: center;
+  padding: 100px 150px;
   font-family: $font-inter;
-  width: 100%;
   min-height: 100vh;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   .planning-title {
-    color:#00FF00;
-    font-size: 3rem;
+    color:$color-vert;
+    font-size: 2.2rem;
     letter-spacing: 6px;
     text-transform: uppercase;
-    font-weight: 900;
     margin-bottom: 30px;
   }
   //Encadré PLANNING
@@ -25,14 +20,10 @@
     display: flex;
     width: 100%;
     max-width: 1400px;
-    margin: 0 auto;
     border: 3px solid $color-cardRose;
-    box-sizing: border-box;
   }
   .planning-table {
     width: 50%;
-    border-collapse: collapse;
-    margin: 0;
     // PLANNING RÉDUIT
     th, td {
       padding: 15px 30px;
@@ -41,7 +32,7 @@
     }
     // En-tête
     th {
-      color: #ffffff;
+      color: $color-white;
       font-size: 1.6rem;
       font-weight: 900;
       letter-spacing: 2px;
@@ -52,58 +43,43 @@
   }
   // Ligne de séparation verticale
   .border-right {
-    border-right: 5px solid $color-cardRose;
+    border-right: 2px solid $color-cardRose;
   }
   // Colonne des Heures
   .time-cell {
-    color: #ffffff;
+    color: $color-white;
     font-weight: bold;
     font-size: 1.5rem;
-    width: 30%;
+
   }
   // Noms des Artistes
   .artist-cell a {
-    color: #b3b3b3;
+    color: $color-step;
     text-decoration: none;
-    font-weight: bold;
     font-size: 1.5rem;
     letter-spacing: 1px;
-    transition: color 0.2s ease, transform 0.2s ease;
-    display: inline-block;
-
+    transition: color 0.2s ease;
     &:hover {
-      color: #FF0080;
+      color: $color-cardRose;
     }
   }
   //FORMAT TABLETTE
   @media (max-width: 1024px) {
-    height: auto; // On lâche le plein écran fixe si le contenu dépasse en hauteur
-    padding: 60px 40px;
+    padding: 60px 100px;
     .planning-wrapper {
       flex-direction: column;
     }
     .planning-table {
       width: 100%;
-      border-bottom: 5px solid $color-cardRose;
+      border-bottom: 2px solid $color-cardRose;
       &:last-child {
         border-bottom: none;
       }
     }
-    .border-right {
-      border-right: none;
-    }
   }
-  .planning-table:last-child {
-    border-bottom: none;
-  }
-
   //FORMAT MOBILE
   @media (max-width: 768px) {
-    padding: 110px 20px 40px 20px;
-    .planning-title {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-    }
+    padding: 110px 30px 40px 30px;
     .planning-table {
       th, td {
         padding: 12px 10px;
